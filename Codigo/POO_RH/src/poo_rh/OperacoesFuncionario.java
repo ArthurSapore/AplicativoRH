@@ -17,26 +17,23 @@ public class OperacoesFuncionario {
             }
         }
 		if(funcionario==null) {
-        	System.out.println("Funcion�rio n�o existente.");
-        }
-	/*	
-    	System.out.println("Deseja tentar novamente? \n1-SIM \n2-NAO");
-    	pesquisa = leitor.nextLine();
-    	switch(pesquisa) {
-        	case"1":
-        		pesquisarFunc(funcionarios);
-        		break;
-        	case"2":
-        		RH.menu();
-        		break;
-        	default:{
-        		System.out.println("Opcao invalida");
-        		RH.menu();
-        	}
-    	}
-
-		operacoes(funcionarios);
-*/
+                    System.out.println("Funcion�rio n�o existente.");
+                    System.out.println("Deseja tentar novamente? \n1-SIM \n2-NAO");
+                    pesquisa = leitor.nextLine();
+                    switch(pesquisa) {
+                        case"1":
+                            pesquisarFunc(funcionarios);
+                            break;
+                        case"2":
+                            RH.menu();
+                            break;
+                        default:{
+                            System.out.println("Opcao invalida");
+                            RH.menu();
+                        }
+                    }
+                }
+            operacoes(funcionarios);
 	}
 	
 	public static void operacoes(List<Funcionario> funcionarios){
@@ -55,9 +52,7 @@ public class OperacoesFuncionario {
         System.out.println("                  |                                      |");
         System.out.println("                  |         5 - Calcular ferias          |");
         System.out.println("                  |                                      |");
-        System.out.println("                  |  6 - Calcular somatorio dos salario  |");
-        System.out.println("                  |                                      |");
-        System.out.println("                  |              7 - VOLTAR              |");
+        System.out.println("                  |              6 - VOLTAR              |");
         System.out.println("                  |                                      |");
         System.out.println("                  |                                      |");
         System.out.println("                  ========================================\n");
@@ -85,9 +80,6 @@ public class OperacoesFuncionario {
         	operacoes(funcionarios);
         	break;
         case "6":
-        	calcSumSalario(funcionarios);
-        	break;
-        case "7":
         	RH.menu();
         	operacoes(funcionarios);
         	break;
@@ -235,15 +227,6 @@ public class OperacoesFuncionario {
     		operacoes(funcionarios);
     	}
     	operacoes(funcionarios); 	
-    }
-    
-    public static void calcSumSalario(List<Funcionario> funcionarios){
-        double salario = 0;
-        for(Funcionario funcionarioss: funcionarios){
-            salario += funcionarioss.getSalario();
-        }
-        System.out.println("Somatorio do salario de todos os funcionarios cadastrados no sistema: " + "R$" + salario);
-        operacoes(funcionarios);
     }
 }
 

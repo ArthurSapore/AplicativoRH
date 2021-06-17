@@ -28,7 +28,16 @@ public class RH {
             }
             funcionarios.add(funcionario);
         }
-    }    
+    }  
+    
+    public static void calcSumSalario(List<Funcionario> funcionarios){
+        double salario = 0;
+        for(Funcionario funcionarioss: funcionarios){
+            salario += funcionarioss.getSalario();
+        }
+        System.out.println("Somatorio do salario de todos os funcionarios cadastrados no sistema: " + "R$" + salario);
+        menu();
+    }
     
     public static void menu (){
     	Scanner leitor = new Scanner(System.in);
@@ -41,7 +50,9 @@ public class RH {
         System.out.println("                  |                                      |");
         System.out.println("                  |     2 - Operacoes com funcionario    |");
         System.out.println("                  |                                      |");
-        System.out.println("                  |             3 - SAIR                 |");
+        System.out.println("                  |  3 - Calcular somatorio dos salario  |");
+        System.out.println("                  |                                      |");        
+        System.out.println("                  |             4 - SAIR                 |");
         System.out.println("                  |                                      |");
         System.out.println("                  |                                      |");
         System.out.println("                  ========================================\n");
@@ -54,7 +65,10 @@ public class RH {
         case "2": //OPERACOES COM FUNCIONARIO
         	OperacoesFuncionario.pesquisarFunc(funcionarios);
             break;
-        case "3": // "SAI DO PROGRAMA" 
+        case "3": 
+            calcSumSalario(funcionarios);
+            break;
+        case "4": // "SAI DO PROGRAMA" 
             System.out.println("Ate a Proxima...");
             System.exit(0);
             break;
