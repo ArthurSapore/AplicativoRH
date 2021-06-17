@@ -1,5 +1,6 @@
 package poo_rh;
 
+import java.util.Random;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,6 +30,36 @@ public class RH {
             funcionarios.add(funcionario);
         }
     }  
+  
+        public static void addMesesTrabalhados (){
+        for(Funcionario funcionarioss: funcionarios){
+            Random random = new Random();
+            int qtd = random.nextInt()*100; //Número aleatório de 0 à 100.
+            funcionarioss.setMesesTrabalhados(qtd);
+        }
+    }
+    
+    public static void addNumFaltas (){
+        for(Funcionario funcionarioss: funcionarios){
+            Random random = new Random();
+            int qtd = random.nextInt()*20; //Número aleatório de 0 à 20.
+            funcionarioss.setNumFaltas(qtd);
+        }
+    }
+    
+    public static void addValorBonus (){
+        for(Funcionario funcionarioss: funcionarios){
+            if(funcionarioss instanceof Gerente){
+               Random random = new Random();
+               double valor = random.nextDouble()*1000; //Número aleatório de 0 à 1000.
+               ((Gerente) funcionarioss).setValorBonus(valor);
+            }else if( funcionarioss instanceof Diretor){
+               Random random = new Random();
+               double valor = random.nextDouble()*1000; //Número aleatório de 0 à 1000.
+               ((Diretor) funcionarioss).setValorBonus(valor);
+            }    
+        }
+    }
     
     public static void calcSumSalario(List<Funcionario> funcionarios){
         double salario = 0;
@@ -83,6 +114,9 @@ public class RH {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
     	lerDados();
+        addMesesTrabalhados();
+        addNumFaltas();
+        addValorBonus();
     	menu();
     }
 }

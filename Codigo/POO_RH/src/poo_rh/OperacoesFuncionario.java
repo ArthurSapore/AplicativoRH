@@ -1,12 +1,13 @@
 package poo_rh;
 
+import java.util.Random;
 import java.util.List;
 import java.util.Scanner;
 
 public class OperacoesFuncionario {
     static private Funcionario  funcionario;
     static Scanner leitor = new Scanner(System.in);
-	
+    
     public static void pesquisarFunc (List<Funcionario> funcionarios) {
         System.out.println("Digite o nome do funcionario ");
         String pesquisa = leitor.nextLine();
