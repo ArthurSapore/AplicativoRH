@@ -1,5 +1,6 @@
 package poo_rh;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.List;
 import java.util.Scanner;
@@ -135,6 +136,7 @@ public class OperacoesFuncionario {
             promovido = new Analista_Senior(funcionario.getNome(), funcionario.getIdentificadorUnico());
             funcionarios.remove(funcionario);
             funcionarios.add(promovido);
+            funcionario = promovido;
             System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Analista Senior com sucesso");
         }
 
@@ -142,6 +144,7 @@ public class OperacoesFuncionario {
             promovido = new Gerente(funcionario.getNome(), funcionario.getIdentificadorUnico());
             funcionarios.remove(funcionario);
             funcionarios.add(promovido);
+            funcionario = promovido;
             System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Gerente com sucesso");
         }
 
@@ -149,6 +152,7 @@ public class OperacoesFuncionario {
             promovido = new Diretor(funcionario.getNome(), funcionario.getIdentificadorUnico());
             funcionarios.remove(funcionario);
             funcionarios.add(promovido);
+            funcionario = promovido;
             System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Diretor com sucesso");
         }
         else{
@@ -160,51 +164,60 @@ public class OperacoesFuncionario {
     
     private static void alterarFaltas(List<Funcionario> funcionarios) {
 
-        System.out.println("Digite o n�mero de dias:");
-        int dias = leitor.nextInt();
-        leitor.nextLine();
-        System.out.println("1 - acrescentar \n2 - diminuir");
-        String opc = leitor.nextLine();
-        switch(opc) {
-            case "1":
-                funcionario.setNumFaltas(funcionario.getNumFaltas() + dias);
-                voltar();
-                alterarDados(funcionarios);
-                break;
-            case "2":
-                if(funcionario.getNumFaltas() - dias >= 0) {
-                        funcionario.setNumFaltas(funcionario.getNumFaltas() - dias);
-                }else {
-                        funcionario.setNumFaltas(0);
-                }
-                voltar();
-                alterarDados(funcionarios);
-                break;
-            default:{
-                System.out.println("Opcao inv�lida!!");
-                voltar();
-                alterarFaltas(funcionarios);
-            }	
-        }
+       try{
+           System.out.println("Digite o n�mero de dias:");
+           int dias = leitor.nextInt();
+           leitor.nextLine();
+           System.out.println("1 - acrescentar \n2 - diminuir");
+           String opc = leitor.nextLine();
+           switch(opc) {
+               case "1":
+                   funcionario.setNumFaltas(funcionario.getNumFaltas() + dias);
+                   voltar();
+                   alterarDados(funcionarios);
+                   break;
+               case "2":
+                   if(funcionario.getNumFaltas() - dias >= 0) {
+                       funcionario.setNumFaltas(funcionario.getNumFaltas() - dias);
+                   }else {
+                       funcionario.setNumFaltas(0);
+                   }
+                   voltar();
+                   alterarDados(funcionarios);
+                   break;
+               default:{
+                   System.out.println("Opcao inv�lida!!");
+                   voltar();
+                   alterarFaltas(funcionarios);
+               }
+           }
+       }catch(InputMismatchException ex){
+           System.out.println("Erro causado porque a entrada está não é número inteiro. ");
+       }
     }
 	
     private static void alterarBonus(List<Funcionario> funcionarios) {
-        System.out.println("Digite o valor do bonus: ");
-        double valor = leitor.nextDouble();
 
-        if(funcionario instanceof Gerente) {
-            ((Gerente) funcionario).setValorBonus(valor);
-            System.out.println("Valor adicionado com sucesso.\n");
-        }else if(funcionario instanceof Diretor) {
-            ((Diretor) funcionario).setValorBonus(valor);
-            System.out.println("Valor adicionado com sucesso.\n");
-        }else {
-            System.out.println("O funcionario "+funcionario.getNome()+" nao recebe bonus");
+        try{
+            System.out.println("Digite o valor do bonus: ");
+            double valor = leitor.nextDouble();
+
+            if(funcionario instanceof Gerente) {
+                ((Gerente) funcionario).setValorBonus(valor);
+                System.out.println("Valor adicionado com sucesso.\n");
+            }else if(funcionario instanceof Diretor) {
+                ((Diretor) funcionario).setValorBonus(valor);
+                System.out.println("Valor adicionado com sucesso.\n");
+            }else {
+                System.out.println("O funcionario "+funcionario.getNome()+" nao recebe bonus");
+                voltar();
+                alterarDados(funcionarios);
+            }
             voltar();
             alterarDados(funcionarios);
+        }catch(InputMismatchException ex){
+            System.out.println("Erro causado porque a entrada está não é número double. ");
         }
-        voltar();
-        alterarDados(funcionarios);
     }
 	
     private static void relatorioFuncionario (List<Funcionario> funcionarios) {

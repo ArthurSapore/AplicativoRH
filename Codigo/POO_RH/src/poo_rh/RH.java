@@ -1,12 +1,10 @@
 package poo_rh;
 
-import java.util.Random;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Random;
 
 public class RH {
     private static List<Funcionario> funcionarios = new ArrayList<>();
@@ -115,13 +113,15 @@ public class RH {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         try{
             lerDados();
+            addMesesTrabalhados();
+            addNumFaltas();
+            addValorBonus();
+            menu();
+
         }catch(FileNotFoundException e){
             System.out.println(e.getMessage() + " Porque o caminho do arquivo não é válido.");
+        }catch(IOException io){
+            System.out.println(io.getMessage());
         }
-        addMesesTrabalhados();
-        addNumFaltas();
-        addValorBonus();
-
-    	menu();
     }
 }
