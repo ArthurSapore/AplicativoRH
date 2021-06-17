@@ -25,8 +25,11 @@ public class Analista_Senior extends Analista implements IOperacaoAnalista{
 
     @Override
     public double calcularFerias() {
-        this.valorFerias = this.VALOR_BASE + (this.VALOR_BASE/3);
-        return this.valorFerias;
+        if(super.getMesesTrabalhados() > 12){
+            this.valorFerias = this.VALOR_BASE + (this.VALOR_BASE/3);
+            return this.valorFerias;
+        }
+        else return 0;
     }
 
     @Override

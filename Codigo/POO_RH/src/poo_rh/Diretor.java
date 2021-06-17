@@ -5,7 +5,7 @@ public class Diretor extends Funcionario implements IOperacaoAdm{
     private static final double VALOR_BASE = 15000.00;
     private static final String FUNCAO = "Diretor";
     private String CNPJ;
-    private double valorBonus;
+    private double valorBonus = 0;
     private double salarioTotal;
 
     public Diretor(String CNPJ, String nome) {
@@ -37,7 +37,15 @@ public class Diretor extends Funcionario implements IOperacaoAdm{
 
     @Override
     public double calcularSalario() {
-        return this.calcularBonus() + this.VALOR_BASE;
+        double salario;
+        if(super.getNumFaltas() > 0){
+            return this.VALOR_BASE;
+        }
+        else{
+            salario = (this.calcularBonus() + this.VALOR_BASE);
+            this.salarioTotal = salario;
+            return salario;
+        }
     }
 
     @Override

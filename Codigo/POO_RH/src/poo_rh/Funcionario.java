@@ -4,9 +4,9 @@ public abstract class Funcionario {
     private String identificadorUnico;
     private String nome;
     private String contrato;
-    private int numFaltas;
+    private int numFaltas = 0;
     private String funcao;
-    private int mesesTrabalhados;
+    private int mesesTrabalhados = 0;
     
     public Funcionario( String nome, String contrato, String identificador) {
         this.nome=nome;
