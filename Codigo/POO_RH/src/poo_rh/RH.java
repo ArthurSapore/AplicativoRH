@@ -61,7 +61,7 @@ public class RH {
         String opc = leitor.nextLine();
         switch(opc) {
         case "1": //CADASTRAR FUNCIONARIO
-        	CadastrarFuncionario.cadastrarUsuario();
+        	CadastrarFuncionario.cadastrarUsuario(funcionarios);
             break;
         case "2": //OPERACOES COM FUNCIONARIO
         	OperacoesFuncionario.pesquisarFunc(funcionarios);
@@ -74,7 +74,8 @@ public class RH {
             System.exit(0);
             break;
         default:
-            System.out.println("OPCAO INVALIDA!");
+            System.out.println("OPCAO INVALIDA!\n");
+            OperacoesFuncionario.voltar();
             menu();
             break;
         }
