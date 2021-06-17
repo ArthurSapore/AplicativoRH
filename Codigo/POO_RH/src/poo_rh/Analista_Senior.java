@@ -11,6 +11,7 @@ public class Analista_Senior extends Analista implements IOperacaoAnalista{
     public Analista_Senior(String CPF, String nome) {
         super(CPF, nome);
         this.setHierarquia(HIERARQUIA);
+        this.setFuncao(HIERARQUIA);
     }
 
     @Override

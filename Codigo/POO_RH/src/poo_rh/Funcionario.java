@@ -58,4 +58,14 @@ public abstract class Funcionario {
     public abstract double getValor13();
     public abstract double getValorFerias();
     public abstract double getBonus();
+    
+    @Override
+    public String toString(){
+        String aux = this.nome;
+        StringBuilder desc = new StringBuilder(aux);
+        
+        desc.append(" - "+this.identificadorUnico+"\nFuncao: "+this.funcao+"\nMeses Trabalhados: "+this.mesesTrabalhados+"\nNumero de faltas: "+this.numFaltas+"\nValor do salario:"+this.getSalario()+"\n ");
+        aux = desc.toString();
+        return aux;
+    }
 }

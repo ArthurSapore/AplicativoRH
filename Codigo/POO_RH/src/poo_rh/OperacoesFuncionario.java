@@ -208,7 +208,7 @@ public class OperacoesFuncionario {
     }
 	
     public static void relatorioFuncionario (List<Funcionario> funcionarios) {
-        funcionario.toString();
+        System.out.println(funcionario.toString());
         voltar();
         operacoes(funcionarios);
     }
