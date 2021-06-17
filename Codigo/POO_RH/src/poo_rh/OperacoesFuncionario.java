@@ -72,7 +72,6 @@ public class OperacoesFuncionario {
                 break;
             case "3":
                 pesquisarFunc(funcionarios);
-                operacoes(funcionarios);
                 break;
             case "4":
                 calcular13salario(funcionarios);
@@ -217,10 +216,10 @@ public class OperacoesFuncionario {
     public static void calcular13salario(List<Funcionario> funcionarios) {
     	if(funcionario instanceof Analista_Junior) {
     		((Analista_Junior) funcionario).calcular13();
-    		System.out.println("13 salario do " +funcionario.getNome() + ": "+funcionario.getValor13());
+    		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
     	}else if(funcionario instanceof Analista_Senior) {
-    		((Analista_Junior) funcionario).calcular13();
-    		System.out.println("13 salario do " +funcionario.getNome() + ": "+funcionario.getValor13());
+    		((Analista_Senior) funcionario).calcular13();
+    		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
     	}else {
     		System.out.println("O funcion�rio "+funcionario.getNome()+" n�o recebe 13� sal�rio");
     		voltar();
@@ -234,10 +233,10 @@ public class OperacoesFuncionario {
     public static void calcularFerias(List<Funcionario> funcionarios) {
     	if(funcionario instanceof Analista_Junior) {
     		((Analista_Junior) funcionario).calcularFerias();
-    		System.out.println("O valor das ferias do " +funcionario.getNome() + ": "+funcionario.getValorFerias());
+    		System.out.println("O valor das ferias do " +funcionario.getNome() + ": R$"+funcionario.getValorFerias());
     	}else if(funcionario instanceof Analista_Senior) {
-    		((Analista_Junior) funcionario).calcularFerias();
-    		System.out.println("13 salario do " +funcionario.getNome() + ": "+ funcionario.getValorFerias());
+    		((Analista_Senior) funcionario).calcularFerias();
+    		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+ funcionario.getValorFerias());
     	}else {
     		System.out.println("O funcionario "+funcionario.getNome()+" nao recebe ferias");
                 voltar();

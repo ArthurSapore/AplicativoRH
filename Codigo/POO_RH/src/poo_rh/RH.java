@@ -34,7 +34,7 @@ public class RH {
         public static void addMesesTrabalhados (){
         for(Funcionario funcionarioss: funcionarios){
             Random random = new Random();
-            int qtd = random.nextInt()*100; //Número aleatório de 0 à 100.
+            int qtd = random.nextInt(50); //Número aleatório de 0 à 100.
             funcionarioss.setMesesTrabalhados(qtd);
         }
     }
@@ -42,7 +42,7 @@ public class RH {
     public static void addNumFaltas (){
         for(Funcionario funcionarioss: funcionarios){
             Random random = new Random();
-            int qtd = random.nextInt()*20; //Número aleatório de 0 à 20.
+            int qtd = random.nextInt(5); //Número aleatório de 0 à 20.
             funcionarioss.setNumFaltas(qtd);
         }
     }
@@ -51,11 +51,11 @@ public class RH {
         for(Funcionario funcionarioss: funcionarios){
             if(funcionarioss instanceof Gerente){
                Random random = new Random();
-               double valor = random.nextDouble()*1000; //Número aleatório de 0 à 1000.
+               double valor = (double)random.nextInt(100)/100; //Número aleatório de 0 à 1000.
                ((Gerente) funcionarioss).setValorBonus(valor);
             }else if( funcionarioss instanceof Diretor){
                Random random = new Random();
-               double valor = random.nextDouble()*1000; //Número aleatório de 0 à 1000.
+               double valor = (double)random.nextInt(100)/100; //Número aleatório de 0 à 1000.
                ((Diretor) funcionarioss).setValorBonus(valor);
             }    
         }
@@ -113,10 +113,15 @@ public class RH {
     }
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
-    	lerDados();
+        try{
+            lerDados();
+        }catch(FileNotFoundException e){
+            System.out.println(e.getMessage() + " Porque o caminho do arquivo não é válido.");
+        }
         addMesesTrabalhados();
         addNumFaltas();
         addValorBonus();
+
     	menu();
     }
 }

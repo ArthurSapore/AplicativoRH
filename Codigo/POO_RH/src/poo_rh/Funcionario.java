@@ -64,7 +64,7 @@ public abstract class Funcionario {
         String aux = this.nome;
         StringBuilder desc = new StringBuilder(aux);
         
-        desc.append(" - "+this.identificadorUnico+"\nFuncao: "+this.funcao+"\nMeses Trabalhados: "+this.mesesTrabalhados+"\nNumero de faltas: "+this.numFaltas+"\nValor do salario:"+this.getSalario()+"\n ");
+        desc.append(" - "+this.identificadorUnico+"\nFuncao: "+this.funcao+"\nMeses Trabalhados: "+this.mesesTrabalhados+"\nNumero de faltas: "+this.numFaltas+"\nValor do salario: R$"+this.getSalario()+"\n ");
         aux = desc.toString();
         return aux;
     }

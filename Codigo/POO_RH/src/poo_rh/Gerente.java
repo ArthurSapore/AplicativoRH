@@ -32,12 +32,12 @@ public class Gerente extends Funcionario implements IOperacaoAdm{
     
     @Override
     public double calcularBonus() {
-        return this.valorBonus / 100;
+        return this.valorBonus*this.VALOR_BASE;
     }
 
     @Override
     public double calcularSalario() {
-        return this.calcularBonus() * this.VALOR_BASE;
+        return this.calcularBonus() + this.VALOR_BASE;
     }
 
     @Override

@@ -16,13 +16,16 @@ public class Analista_Junior extends Analista implements IOperacaoAnalista{
 
     @Override
     public double calcular13() {
-        this.valor13 = this.calcularSalario() / (12 * super.getMesesTrabalhados());
+        int quantMesesTrabalhados = super.getMesesTrabalhados();
+        if(quantMesesTrabalhados < 12) quantMesesTrabalhados = (quantMesesTrabalhados % 12);
+        else quantMesesTrabalhados = 12;
+        this.valor13 = ((this.VALOR_BASE/ 12) * quantMesesTrabalhados);
         return this.valor13;
     }
 
     @Override
     public double calcularFerias() {
-        this.valorFerias = this.calcularSalario() + (this.calcularSalario()/3);
+        this.valorFerias = this.VALOR_BASE + (this.VALOR_BASE/3);
         return this.valorFerias;
     }
 
