@@ -9,7 +9,7 @@ public class Diretor extends Funcionario implements IOperacaoAdm{
     private double salarioTotal;
 
     public Diretor(String CNPJ, String nome) {
-        super(nome, CONTRATO);
+        super(nome, CONTRATO, CNPJ);
         this.CNPJ = CNPJ;
         this.setFuncao(FUNCAO);
     }

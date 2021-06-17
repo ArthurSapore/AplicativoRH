@@ -36,6 +36,7 @@ public class RH {
             salario += funcionarioss.getSalario();
         }
         System.out.println("Somatorio do salario de todos os funcionarios cadastrados no sistema: " + "R$" + salario);
+        OperacoesFuncionario.voltar();
         menu();
     }
     
@@ -65,7 +66,7 @@ public class RH {
         case "2": //OPERACOES COM FUNCIONARIO
         	OperacoesFuncionario.pesquisarFunc(funcionarios);
             break;
-        case "3": 
+        case "3":  //CALCULA SOMATORIO DO SALARIO DE TODOS FUNCIONARIOS
             calcSumSalario(funcionarios);
             break;
         case "4": // "SAI DO PROGRAMA" 

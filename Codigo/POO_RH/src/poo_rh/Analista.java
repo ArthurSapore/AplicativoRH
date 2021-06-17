@@ -6,7 +6,7 @@ public abstract class Analista extends Funcionario{
     private String hierarquia;
 
     public Analista(String cpf, String nome) {
-        super(nome, CONTRATO);
+        super(nome, CONTRATO, cpf);
         setCPF(cpf);
     }
 
