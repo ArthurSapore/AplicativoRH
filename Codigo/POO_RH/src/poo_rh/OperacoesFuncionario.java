@@ -40,7 +40,7 @@ public class OperacoesFuncionario {
         operacoes(funcionarios);
     }
 	
-    public static void operacoes(List<Funcionario> funcionarios){	
+    private static void operacoes(List<Funcionario> funcionarios){	
     	Scanner leitor = new Scanner(System.in);
 
         System.out.println("                  ========================================"); 
@@ -92,7 +92,7 @@ public class OperacoesFuncionario {
         }
     }
 	
-    public static void alterarDados (List<Funcionario> funcionarios) {
+    private static void alterarDados (List<Funcionario> funcionarios) {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("                  ========================================"); 
@@ -129,7 +129,7 @@ public class OperacoesFuncionario {
         }
     }
         
-    public static void alterarContrato(List<Funcionario> funcionarios) {
+    private static void alterarContrato(List<Funcionario> funcionarios) {
         Funcionario promovido;
         if(funcionario instanceof Analista_Junior) {
             promovido = new Analista_Senior(funcionario.getNome(), funcionario.getIdentificadorUnico());
@@ -158,7 +158,7 @@ public class OperacoesFuncionario {
         alterarDados(funcionarios);
     }
     
-    public static void alterarFaltas(List<Funcionario> funcionarios) {
+    private static void alterarFaltas(List<Funcionario> funcionarios) {
 
         System.out.println("Digite o n�mero de dias:");
         int dias = leitor.nextInt();
@@ -188,7 +188,7 @@ public class OperacoesFuncionario {
         }
     }
 	
-    public static void alterarBonus(List<Funcionario> funcionarios) {
+    private static void alterarBonus(List<Funcionario> funcionarios) {
         System.out.println("Digite o valor do bonus: ");
         double valor = leitor.nextDouble();
 
@@ -207,13 +207,13 @@ public class OperacoesFuncionario {
         alterarDados(funcionarios);
     }
 	
-    public static void relatorioFuncionario (List<Funcionario> funcionarios) {
+    private static void relatorioFuncionario (List<Funcionario> funcionarios) {
         System.out.println(funcionario.toString());
         voltar();
         operacoes(funcionarios);
     }
 
-    public static void calcular13salario(List<Funcionario> funcionarios) {
+    private static void calcular13salario(List<Funcionario> funcionarios) {
     	if(funcionario instanceof Analista_Junior) {
     		((Analista_Junior) funcionario).calcular13();
     		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
@@ -230,7 +230,7 @@ public class OperacoesFuncionario {
     	
     } 
     
-    public static void calcularFerias(List<Funcionario> funcionarios) {
+    private static void calcularFerias(List<Funcionario> funcionarios) {
     	if(funcionario instanceof Analista_Junior) {
     		((Analista_Junior) funcionario).calcularFerias();
     		System.out.println("O valor das ferias do " +funcionario.getNome() + ": R$"+funcionario.getValorFerias());
