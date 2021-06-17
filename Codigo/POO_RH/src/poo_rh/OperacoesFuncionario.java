@@ -42,7 +42,6 @@ public class OperacoesFuncionario {
     }
 	
     private static void operacoes(List<Funcionario> funcionarios){	
-    	Scanner leitor = new Scanner(System.in);
 
         System.out.println("                  ========================================"); 
         System.out.println("                  |                                      |");
@@ -94,7 +93,6 @@ public class OperacoesFuncionario {
     }
 	
     private static void alterarDados (List<Funcionario> funcionarios) {
-        Scanner leitor = new Scanner(System.in);
 
         System.out.println("                  ========================================"); 
         System.out.println("                  |                                      |");
@@ -260,7 +258,6 @@ public class OperacoesFuncionario {
     }
 
     public static void voltar(){
-        leitor = new Scanner(System.in);
         System.out.println("Pressione ENTER para ir para o Menu.");
         String resposta = leitor.nextLine();
     } 
