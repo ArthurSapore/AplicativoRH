@@ -42,7 +42,6 @@ public class OperacoesFuncionario {
     }
 	
     private static void operacoes(List<Funcionario> funcionarios){	
-    	Scanner leitor = new Scanner(System.in);
 
         System.out.println("                  ========================================"); 
         System.out.println("                  |                                      |");
@@ -94,7 +93,6 @@ public class OperacoesFuncionario {
     }
 	
     private static void alterarDados (List<Funcionario> funcionarios) {
-        Scanner leitor = new Scanner(System.in);
 
         System.out.println("                  ========================================"); 
         System.out.println("                  |                                      |");
@@ -202,7 +200,7 @@ public class OperacoesFuncionario {
             System.out.println("Digite o valor do bonus: ");
             double valor = leitor.nextDouble();
 
-            if(funcionario instanceof Gerente) {
+            if((funcionario instanceof Gerente)) {
                 ((Gerente) funcionario).setValorBonus(valor);
                 System.out.println("Valor adicionado com sucesso.\n");
             }else if(funcionario instanceof Diretor) {
@@ -227,11 +225,8 @@ public class OperacoesFuncionario {
     }
 
     private static void calcular13salario(List<Funcionario> funcionarios) {
-    	if(funcionario instanceof Analista_Junior) {
-    		((Analista_Junior) funcionario).calcular13();
-    		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
-    	}else if(funcionario instanceof Analista_Senior) {
-    		((Analista_Senior) funcionario).calcular13();
+    	if(funcionario instanceof Analista_Junior || (funcionario instanceof Analista_Senior) ) {
+    		((IOperacaoAnalista) funcionario).calcular13();
     		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
     	}else {
     		System.out.println("O funcion�rio "+funcionario.getNome()+" n�o recebe 13� sal�rio");
@@ -244,12 +239,9 @@ public class OperacoesFuncionario {
     } 
     
     private static void calcularFerias(List<Funcionario> funcionarios) {
-    	if(funcionario instanceof Analista_Junior) {
-    		((Analista_Junior) funcionario).calcularFerias();
+    	if((funcionario instanceof Analista_Junior) || (funcionario instanceof Analista_Senior)) {
+    		((IOperacaoAnalista) funcionario).calcularFerias();
     		System.out.println("O valor das ferias do " +funcionario.getNome() + ": R$"+funcionario.getValorFerias());
-    	}else if(funcionario instanceof Analista_Senior) {
-    		((Analista_Senior) funcionario).calcularFerias();
-    		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+ funcionario.getValorFerias());
     	}else {
     		System.out.println("O funcionario "+funcionario.getNome()+" nao recebe ferias");
                 voltar();
@@ -260,7 +252,6 @@ public class OperacoesFuncionario {
     }
 
     public static void voltar(){
-        leitor = new Scanner(System.in);
         System.out.println("Pressione ENTER para ir para o Menu.");
         String resposta = leitor.nextLine();
     } 

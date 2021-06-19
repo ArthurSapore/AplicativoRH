@@ -19,7 +19,7 @@ public class CadastrarFuncionario {
 
     public static void nome(){
         System.out.print("Nome do funcionario: ");
-        System.err.println("Para voltar ao menu principal, digite: 'VOLTAR' ");
+        System.out.println("Para voltar ao menu principal, digite: 'VOLTAR'\n ");
         String nomeFuncionario = leitor.nextLine();
         if(nomeFuncionario.equalsIgnoreCase("voltar")) {
             RH.menu();
@@ -30,7 +30,7 @@ public class CadastrarFuncionario {
     public static void cargo(List<Funcionario> funcionarios) {
         System.out.println("Cargo do funcionario: ");
         System.out.println("1 - Analista Junior");
-        System.out.println("2 - Analista S�nior ");
+        System.out.println("2 - Analista Senior ");
         System.out.println("3 - Gerente ");
         System.out.println("4 - Diretor ");
         String cargo = leitor.nextLine();
@@ -92,10 +92,11 @@ public class CadastrarFuncionario {
         }
 
         dados [0] = cpf;
+        System.out.println("Funcionario cadastrado com sucesso.");
     }
 
     public static void cnpj() {
-        System.out.println("Digite o CNPJ do funcion�rio");
+        System.out.println("Digite o CNPJ do funcionario");
         String cnpj = leitor.nextLine();
 
         int cont = 0;
@@ -118,6 +119,7 @@ public class CadastrarFuncionario {
             cnpj();
         }
         dados[0] = cnpj; 
+        System.out.println("Funcionario cadastrado com sucesso.");
     }
 }
 		

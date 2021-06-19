@@ -59,7 +59,7 @@ public class RH {
         }
     }
     
-    public static void calcSumSalario(List<Funcionario> funcionarios){
+    public static void calcSumSalario(){
         double salario = 0;
         for(Funcionario funcionarioss: funcionarios){
             salario += funcionarioss.getSalario();
@@ -96,7 +96,7 @@ public class RH {
         	OperacoesFuncionario.pesquisarFunc(funcionarios);
             break;
         case "3":  //CALCULA SOMATORIO DO SALARIO DE TODOS FUNCIONARIOS
-            calcSumSalario(funcionarios);
+            calcSumSalario();
             break;
         case "4": // "SAI DO PROGRAMA" 
             System.out.println("Ate a Proxima...");
