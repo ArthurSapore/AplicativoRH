@@ -29,7 +29,7 @@ public class RH {
         }
     }  
   
-        public static void addMesesTrabalhados (){
+    public static void addMesesTrabalhados (){
         for(Funcionario funcionarioss: funcionarios){
             Random random = new Random();
             int qtd = random.nextInt(50); //Número aleatório de 0 à 100.
@@ -76,29 +76,24 @@ public class RH {
     	System.out.println("                   |          MENU PRINCIPAL             | ");
         System.out.println("                  ========================================");
         System.out.println("                  |                                      |");
-        System.out.println("                  |     1 - Cadastrar novo funcionario   |");
+        System.out.println("                  |     1 - Operacoes com funcionario    |");
         System.out.println("                  |                                      |");
-        System.out.println("                  |     2 - Operacoes com funcionario    |");
-        System.out.println("                  |                                      |");
-        System.out.println("                  |  3 - Calcular somatorio dos salario  |");
+        System.out.println("                  |  2 - Calcular somatorio dos salario  |");
         System.out.println("                  |                                      |");        
-        System.out.println("                  |             4 - SAIR                 |");
+        System.out.println("                  |             3 - SAIR                 |");
         System.out.println("                  |                                      |");
         System.out.println("                  |                                      |");
         System.out.println("                  ========================================\n");
 		
         String opc = leitor.nextLine();
         switch(opc) {
-        case "1": //CADASTRAR FUNCIONARIO
-        	CadastrarFuncionario.cadastrarUsuario(funcionarios);
-            break;
-        case "2": //OPERACOES COM FUNCIONARIO
+        case "1": //OPERACOES COM FUNCIONARIO
         	OperacoesFuncionario.pesquisarFunc(funcionarios);
             break;
-        case "3":  //CALCULA SOMATORIO DO SALARIO DE TODOS FUNCIONARIOS
+        case "2":  //CALCULA SOMATORIO DO SALARIO DE TODOS FUNCIONARIOS
             calcSumSalario();
             break;
-        case "4": // "SAI DO PROGRAMA" 
+        case "3": // "SAI DO PROGRAMA" 
             System.out.println("Ate a Proxima...");
             System.exit(0);
             break;

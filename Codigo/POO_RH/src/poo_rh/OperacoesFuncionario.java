@@ -1,7 +1,6 @@
 package poo_rh;
 
 import java.util.InputMismatchException;
-import java.util.Random;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,18 +9,18 @@ public class OperacoesFuncionario {
     static Scanner leitor = new Scanner(System.in);
     
     public static void pesquisarFunc (List<Funcionario> funcionarios) {
-        System.out.println("Digite o nome do funcionario ");
+        System.out.println("Digite o nome do funcionario: ");
         String pesquisa = leitor.nextLine();
         for(Funcionario funcionarioss: funcionarios){
             if(funcionarioss.getNome().equals(pesquisa)) {
                 funcionario = funcionarioss;
-                System.out.println("Funcionário encontrado!\n");
+                System.out.println("Funcionario encontrado!\n");
                 voltar();
                 operacoes(funcionarios);
             }
         }
         if(funcionario==null) {
-            System.out.println("Funcion�rio nao existente.");
+            System.out.println("Funcionario nao existente.");
             System.out.println("Deseja tentar novamente? \n1-SIM \n2-NAO");
             pesquisa = leitor.nextLine();
             switch(pesquisa) {
@@ -135,7 +134,7 @@ public class OperacoesFuncionario {
             funcionarios.remove(funcionario);
             funcionarios.add(promovido);
             funcionario = promovido;
-            System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Analista Senior com sucesso");
+            System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Analista Senior com sucesso!");
         }
 
         else if(funcionario instanceof Analista_Senior) {
@@ -143,7 +142,7 @@ public class OperacoesFuncionario {
             funcionarios.remove(funcionario);
             funcionarios.add(promovido);
             funcionario = promovido;
-            System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Gerente com sucesso");
+            System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Gerente com sucesso!");
         }
 
         else if(funcionario instanceof Gerente) {
@@ -151,7 +150,7 @@ public class OperacoesFuncionario {
             funcionarios.remove(funcionario);
             funcionarios.add(promovido);
             funcionario = promovido;
-            System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Diretor com sucesso");
+            System.out.println("Funcionário "+funcionario.getNome()+ " promovido para Diretor com sucesso!");
         }
         else{
             System.out.println("Funcionário "+funcionario.getNome()+ " possui o cargo de diretor. Não pode ser promovido.");
@@ -171,8 +170,6 @@ public class OperacoesFuncionario {
            switch(opc) {
                case "1":
                    funcionario.setNumFaltas(funcionario.getNumFaltas() + dias);
-                   voltar();
-                   alterarDados(funcionarios);
                    break;
                case "2":
                    if(funcionario.getNumFaltas() - dias >= 0) {
@@ -180,22 +177,20 @@ public class OperacoesFuncionario {
                    }else {
                        funcionario.setNumFaltas(0);
                    }
-                   voltar();
-                   alterarDados(funcionarios);
                    break;
                default:{
                    System.out.println("Opcao inv�lida!!");
-                   voltar();
-                   alterarFaltas(funcionarios);
                }
            }
        }catch(InputMismatchException ex){
            System.out.println("Erro causado porque a entrada está não é número inteiro. ");
+       }finally{
+            voltar();
+            alterarDados(funcionarios);
        }
     }
 	
     private static void alterarBonus(List<Funcionario> funcionarios) {
-
         try{
             System.out.println("Digite o valor do bonus: ");
             double valor = leitor.nextDouble();
@@ -207,14 +202,14 @@ public class OperacoesFuncionario {
                 ((Diretor) funcionario).setValorBonus(valor);
                 System.out.println("Valor adicionado com sucesso.\n");
             }else {
-                System.out.println("O funcionario "+funcionario.getNome()+" nao recebe bonus");
-                voltar();
-                alterarDados(funcionarios);
+                System.out.println("Infelizmente o funcionario "+funcionario.getNome()+" nao recebe bonus.");
             }
-            voltar();
-            alterarDados(funcionarios);
         }catch(InputMismatchException ex){
             System.out.println("Erro causado porque a entrada está não é número double. ");
+        }finally{
+            leitor.nextLine();
+            voltar();
+            alterarDados(funcionarios);
         }
     }
 	
@@ -225,30 +220,28 @@ public class OperacoesFuncionario {
     }
 
     private static void calcular13salario(List<Funcionario> funcionarios) {
-    	if(funcionario instanceof Analista_Junior || (funcionario instanceof Analista_Senior) ) {
-    		((IOperacaoAnalista) funcionario).calcular13();
-    		System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
-    	}else {
-    		System.out.println("O funcion�rio "+funcionario.getNome()+" n�o recebe 13� sal�rio");
-    		voltar();
-                operacoes(funcionarios);
-    	}
-        voltar();
-    	operacoes(funcionarios);
-    	
+    	try{
+            ((IOperacaoAnalista) funcionario).calcular13();
+            System.out.println("13 salario do " +funcionario.getNome() + ": R$"+funcionario.getValor13());
+    	}catch(Exception e) {
+            System.out.println("O funcion�rio "+funcionario.getNome()+" n�o recebe 13� sal�rio");
+    	}finally{
+            voltar();
+            operacoes(funcionarios);
+        }    	
     } 
     
     private static void calcularFerias(List<Funcionario> funcionarios) {
-    	if((funcionario instanceof Analista_Junior) || (funcionario instanceof Analista_Senior)) {
-    		((IOperacaoAnalista) funcionario).calcularFerias();
-    		System.out.println("O valor das ferias do " +funcionario.getNome() + ": R$"+funcionario.getValorFerias());
-    	}else {
-    		System.out.println("O funcionario "+funcionario.getNome()+" nao recebe ferias");
-                voltar();
-    		operacoes(funcionarios);
-    	}
-        voltar();
-    	operacoes(funcionarios); 	
+    	try{
+            ((IOperacaoAnalista) funcionario).calcularFerias();
+            System.out.println("O valor das ferias do " +funcionario.getNome() + ": R$"+funcionario.getValorFerias());
+    	}catch(Exception e) {
+            System.out.println("O funcionario "+funcionario.getNome()+" nao recebe ferias");
+    	}finally{
+            voltar();
+            operacoes(funcionarios); 
+        }
+	
     }
 
     public static void voltar(){
